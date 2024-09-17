@@ -70,10 +70,16 @@ API endpoints used in this project:
 - `GET /api/v1/DeleteProduct/{id}`: Deletes a product.
 
 ### Screens
-
 1. **Product List Screen**: Displays the list of products and allows navigation to add or update products.
+![homescreen](https://github.com/user-attachments/assets/e73723ab-dcd4-476d-8f0a-b2ca8d34533a)
 2. **Add Product Screen**: Lets users input new product information.
+![add product Screen](https://github.com/user-attachments/assets/c4d50d57-0aff-4ffb-8e70-4c8449216a18)
 3. **Update Product Screen**: Allows editing of an existing product's details.
+![update product screen](https://github.com/user-attachments/assets/cba5ab39-3c8c-4c0c-96bf-1eff96f9f881)
+4. **Delete Product Screen**: Allows deleting of a product which you want to delete.
+![delete product screen](https://github.com/user-attachments/assets/aedc1fa1-f288-4ee2-9348-921610c6c0f0)
+
+[![Watch the video](https://drive.google.com/drive/u/1/folders/1uDJKdgii66Pj1wvHJQn64CVtrpRd2SEO)
 
 ### Widgets
 
