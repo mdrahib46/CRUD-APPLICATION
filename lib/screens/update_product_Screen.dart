@@ -28,6 +28,8 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
       TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  bool _inProgress = false;
+
   @override
   void initState() {
     _productNameTEController.text = widget.product.productName;
@@ -89,7 +91,7 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
                 height: 16,
               ),
               SizedBox(
-                child: ElevatedButton(
+                child: _inProgress ? const Center( child: CircularProgressIndicator(),) : ElevatedButton(
                   onPressed: () {
                    _ontapUpdateProduct();
                   },
@@ -115,6 +117,11 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
   }
 
   Future<void> _updateProduct(String id) async {
+    _inProgress = true;
+    setState(() {
+
+    });
+
     Uri url = Uri.parse('http://164.68.107.70:6060/api/v1/UpdateProduct/$id');
 
     Map<String, dynamic> requestBody = {
@@ -136,6 +143,10 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Updated data failed ....!')));
       setState(() {});
     }
+    _inProgress = false;
+    setState(() {
+
+    });
 
   }
 
