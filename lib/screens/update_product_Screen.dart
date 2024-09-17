@@ -49,66 +49,75 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              TextFormField(
-                controller: _productNameTEController,
-                decoration: const InputDecoration(
-                  hintText: 'Product Name',
-                  labelText: 'Product Name',
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                const SizedBox(height: 20),
+                TextFormField(
+                  controller: _productNameTEController,
+                  decoration: const InputDecoration(
+                    hintText: 'Product Name',
+                    labelText: 'Product Name',
+                  ),
                 ),
-              ),
-              TextFormField(
-                controller: _productUnitPriceTEController,
-                decoration: const InputDecoration(
-                    hintText: 'Unit Price', labelText: 'Unit Price'),
-              ),
-              TextFormField(
-                controller: _productTotalPriceTEController,
-                decoration: const InputDecoration(
-                  hintText: 'Total Price',
-                  labelText: 'Total Price ',
+                const SizedBox(height: 10),
+                TextFormField(
+                  controller: _productCodeTEController,
+                  decoration: const InputDecoration(
+                      hintText: 'Product Code', labelText: 'Product Code'),
                 ),
-              ),
-              TextFormField(
-                controller: _productCodeTEController,
-                decoration: const InputDecoration(
-                    hintText: 'Product Code', labelText: 'Product Code'),
-              ),
-              TextFormField(
-                controller: _productQuantityTEController,
-                decoration: const InputDecoration(
-                    hintText: 'Quantity', labelText: 'Total Quantity'),
-              ),
-              TextFormField(
-                controller: _productImageTEController,
-                decoration: const InputDecoration(
-                    hintText: 'Product Image', labelText: 'Product Image'),
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              SizedBox(
-                child: _inProgress ? const Center( child: CircularProgressIndicator(),) : ElevatedButton(
-                  onPressed: () {
-                   _ontapUpdateProduct();
-                  },
-                  style: ElevatedButton.styleFrom(
-                      fixedSize: const Size.fromWidth(double.maxFinite),
-                      backgroundColor: Colors.red.shade100),
-                  child: const Text('UPDATE'),
+                const SizedBox(height: 10),
+                TextFormField(
+                  controller: _productUnitPriceTEController,
+                  decoration: const InputDecoration(
+                      hintText: 'Unit Price', labelText: 'Unit Price'),
                 ),
-              )
-            ],
+                const SizedBox(height: 10),
+                TextFormField(
+                  controller: _productQuantityTEController,
+                  decoration: const InputDecoration(
+                      hintText: 'Quantity', labelText: 'Total Quantity'),
+                ),
+                const SizedBox(height: 10),
+                TextFormField(
+                  controller: _productTotalPriceTEController,
+                  decoration: const InputDecoration(
+                    hintText: 'Total Price',
+                    labelText: 'Total Price ',
+                  ),
+                ),
+
+                const SizedBox(height: 10),
+                TextFormField(
+                  controller: _productImageTEController,
+                  decoration: const InputDecoration(
+                      hintText: 'Product Image', labelText: 'Product Image'),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                SizedBox(
+                  child: _inProgress ? const Center( child: CircularProgressIndicator(),) : ElevatedButton(
+                    onPressed: () {
+                     _onTapUpdateProduct();
+                    },
+                    style: ElevatedButton.styleFrom(
+                        fixedSize: const Size.fromWidth(double.maxFinite),
+                        backgroundColor: Colors.red.shade100),
+                    child: const Text('UPDATE'),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  void _ontapUpdateProduct() {
+  void _onTapUpdateProduct() {
     if (_formKey.currentState!.validate()) {
       _updateProduct(widget.product.id);
       _clearText();

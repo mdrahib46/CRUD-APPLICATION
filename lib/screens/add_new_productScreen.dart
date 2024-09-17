@@ -63,7 +63,6 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
                     }
                   },
                 ),
-
                 const SizedBox(height: 10),
                 TextFormField(
                   controller: _productUnitPriceTEController,
@@ -75,7 +74,17 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
                     }
                   },
                 ),
-
+                const SizedBox(height: 10),
+                TextFormField(
+                  controller: _productQuantityTEController,
+                  decoration: const InputDecoration(
+                      hintText: 'Quantity', labelText: 'Total Quantity'),
+                  validator: (String? value) {
+                    if (value == null) {
+                      return "Enter product quantity";
+                    }
+                  },
+                ),
                 const SizedBox(height: 10),
                 TextFormField(
                   controller: _productTotalPriceTEController,
@@ -89,25 +98,12 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
                     }
                   },
                 ),
-
-                const SizedBox(height: 10),
-                TextFormField(
-                  controller: _productQuantityTEController,
-                  decoration: const InputDecoration(
-                      hintText: 'Quantity', labelText: 'Total Quantity'),
-                  validator: (String? value) {
-                    if (value == null) {
-                      return "Enter product quantity";
-                    }
-                  },
-                ),
-
                 const SizedBox(height: 10),
                 TextFormField(
                   controller: _productImageTEController,
                   decoration: const InputDecoration(
                       hintText: 'Product Image', labelText: 'Product Image'),
-                  validator: (String? value){
+                  validator: (String? value) {
                     if (value == null) {
                       return "Enter image url";
                     }
@@ -117,15 +113,19 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
                   height: 16,
                 ),
                 SizedBox(
-                  child: _inProgress ? const Center(child: CircularProgressIndicator(),): ElevatedButton(
-                    onPressed: () {
-                      _onTapAddProduct();
-                    },
-                    style: ElevatedButton.styleFrom(
-                        fixedSize: const Size.fromWidth(double.maxFinite),
-                        backgroundColor: Colors.red.shade100),
-                    child: const Text('Add Product'),
-                  ),
+                  child: _inProgress
+                      ? const Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : ElevatedButton(
+                          onPressed: () {
+                            _onTapAddProduct();
+                          },
+                          style: ElevatedButton.styleFrom(
+                              fixedSize: const Size.fromWidth(double.maxFinite),
+                              backgroundColor: Colors.red.shade100),
+                          child: const Text('Add Product'),
+                        ),
                 )
               ],
             ),
@@ -167,10 +167,16 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
     if (response.statusCode == 200) {
       _clearText();
       ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Add product successfully....!'),),);
+        const SnackBar(
+          content: Text('Add product successfully....!'),
+        ),
+      );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Add product failed....!'),),);
+        const SnackBar(
+          content: Text('Add product failed....!'),
+        ),
+      );
     }
     _inProgress = false;
     setState(() {});
